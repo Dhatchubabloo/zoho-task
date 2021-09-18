@@ -1,8 +1,11 @@
-package l2_programs;
+package String_problems;
+
+import java.util.Scanner;
 
 public class ParaCheckArray {
     public static void main(String[] args) {
-        String str = "(){}[[]]({)}]";
+        Scanner scan= new Scanner(System.in);
+        String str = scan.next();
         char array[] = str.toCharArray();
         String temp = "";
         int count = 0;
