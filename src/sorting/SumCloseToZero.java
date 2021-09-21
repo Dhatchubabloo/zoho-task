@@ -2,14 +2,27 @@ package sorting;
 
 import java.util.Arrays;
 
-public class QuickSort {
+public class SumCloseToZero {
     public static void main(String[] args) {
-        int nums[] = {10, 19, 34, 4, 50};
+        int nums [] = {-21, -67, -37, -18, 4, -65};
         int len = nums.length-1;
         new QuickSort().quickSort(nums,0,len);
         System.out.println(Arrays.toString(nums));
+        for(int i=0;i< nums.length;i++){
+            if(nums[i]>=0){
+                if(i-1>=0){
+                    System.out.println(nums[i]+nums[i-1]);
+                }
+                else
+                    System.out.println(nums[len]+nums[len-1]);
+                break;
+            }
+            else
+                System.out.println(nums[len]+nums[len-1]);
+            break;
+        }
     }
-    public int[] quickSort(int[] array, int left, int right){
+    int[] quickSort(int []array,int left,int right){
         if(left<right){
             int i=left,j=right;
             int pivot = array[left];
@@ -37,4 +50,7 @@ public class QuickSort {
         array[i] = array[j];
         array[j] = temp;
     }
+
+
+
 }
