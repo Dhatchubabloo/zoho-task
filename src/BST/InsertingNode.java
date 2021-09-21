@@ -1,9 +1,25 @@
 package BST;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InsertingNode {
+ArrayList list = new ArrayList();
+    void findLeafNode(Node root){
+        if(root!=null){
+            if(root.left==null&&root.right==null){
+                list.add(root.data);
+            }
+            else {
+                if(root.left!=null){
+                    findLeafNode(root.left);
+                }
+                if(root.right!=null){
+                    findLeafNode(root.right);
+                }
+            }
 
-
+        }
+    }
     Node insert(Node node,int data){
        if(node == null){
             return createNode(data);
@@ -41,16 +57,14 @@ public class InsertingNode {
         Node left, right;
     }
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
             Node root = null;
             InsertingNode obj = new InsertingNode();
-        System.out.println("Enter size:");
-        int num = scan.nextInt();
-        int array [] = new int[num];
+        int array [] = {10,5,3,7,8,9};
             root = obj.insert(root,array[0]);
             for(int i=1;i< array.length ;i++){
                 obj.insert(root,array[i]);
             }
-
+        obj.findLeafNode(root);
+        System.out.println(obj.list);
     }
 }

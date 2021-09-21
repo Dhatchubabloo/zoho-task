@@ -26,7 +26,6 @@ public class Ksmallest {
         if(root!=null){
             inOrder(root.left);
             list.add(root.data);
-            //System.out.print(root.data+" ");
             inOrder(root.right);
         }
     }

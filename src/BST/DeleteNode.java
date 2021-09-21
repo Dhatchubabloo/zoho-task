@@ -51,47 +51,39 @@ public class DeleteNode{
         if (root.key > k)
         {
             root.left = deleteNode(root.left, k);
-            return root;
         }
         else if (root.key < k)
         {
             root.right = deleteNode(root.right, k);
-            return root;
         }
+        else {
+            if (root.left == null) {
+                Node temp = root.right;
+                return temp;
+            } else if (root.right == null) {
+                Node temp = root.left;
+                return temp;
+            } else {
+                Node succParent = root;
+                Node succ = root.right;
 
-        if (root.left == null)
-        {
-            Node temp = root.right;
-            return temp;
-        }
-        else if (root.right == null)
-        {
-            Node temp = root.left;
-            return temp;
-        }
-        else
-        {
-            Node succParent = root;
-            Node succ = root.right;
+                while (succ.left != null) {
+                    succParent = succ;
+                    succ = succ.left;
+                }
+                if (succParent != root)
+                    succParent.left = succ.right;
+                else
+                    succParent.right = succ.right;
+                root.key = succ.key;
 
-            while (succ.left != null)
-            {
-                succParent = succ;
-                succ = succ.left;
+                return root;
             }
-            if (succParent != root)
-                succParent.left = succ.right;
-            else
-                succParent.right = succ.right;
-            root.key = succ.key;
-
-            return root;
         }
+        return root;
     }
-
     public static void main(String args[])
     {
-
         Node root = null;
         root = insert(root, 50);
         root = insert(root, 30);
