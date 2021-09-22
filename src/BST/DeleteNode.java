@@ -58,11 +58,9 @@ public class DeleteNode{
         }
         else {
             if (root.left == null) {
-                Node temp = root.right;
-                return temp;
+                return root.right;
             } else if (root.right == null) {
-                Node temp = root.left;
-                return temp;
+                return root.left;
             } else {
                 Node succParent = root;
                 Node succ = root.right;
